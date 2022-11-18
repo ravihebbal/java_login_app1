@@ -48,5 +48,27 @@ pipeline{
             }
         }
 
+        stage(upload war file to nexus){
+            steps{
+                script{
+                    nexusArtifactUploader artifacts: 
+                    [
+                        [artifactId: 'dptweb', 
+                        classifier: '', 
+                        file: 'target/login.jar', 
+                        type: 'jar'
+                        ]
+                    ], 
+                    credentialsId: 'nexus-auth', 
+                    groupId: 'com.devopsrealtime', 
+                    nexusUrl: '100.26.3.177:8081', 
+                    nexusVersion: 'nexus3', 
+                    protocol: 'http', 
+                    repository: 'demoapp-release', 
+                    version: '1.0'
+                }
+            }
+        }
+
     }
 }

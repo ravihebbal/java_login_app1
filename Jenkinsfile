@@ -17,12 +17,11 @@ pipeline{
             }
         }
 
-/*        stage('Integration testing'){
+        stage('Integration testing'){
 
             steps{
                 sh "mvn verify -DskipUnitTests"
             }
-        }  */
-
+        }  
     }
 }

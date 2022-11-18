@@ -54,7 +54,7 @@ pipeline{
 
                     def readPomVersion = readMavenPom file: 'pom.xml'
 
-                    dif nexusRepo = readPomVersion.version.endsWith("SHANSHOT") ? "demoapp-snapshot" : "demoapp-release"
+                    def nexusRepo = readPomVersion.version.endsWith("SHANSHOT") ? "demoapp-snapshot" : "demoapp-release"
                     nexusArtifactUploader artifacts: 
                     [
                         [artifactId: 'dptweb', 

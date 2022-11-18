@@ -55,8 +55,8 @@ pipeline{
                     [
                         [artifactId: 'dptweb', 
                         classifier: '', 
-                        file: 'target/login.jar', 
-                        type: 'jar'
+                        file: 'target/login.war', 
+                        type: 'war'
                         ]
                     ], 
                     credentialsId: 'nexus-auth', 

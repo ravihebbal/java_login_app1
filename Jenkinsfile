@@ -6,7 +6,7 @@ pipeline{
         stage('git checkout'){
 
             steps{
-                git 'https://github.com/ravihebbal/java_login_app1.git'
+                git 'https://github.com/ravihebbal/petclinic.git'
             }
         }
 
@@ -22,6 +22,13 @@ pipeline{
             steps{
                 sh "mvn verify -DskipUnitTests"
             }
-        }  
+        }
+
+        stage('maven build'){
+            steps{
+                sh "mvn clean install"
+            }
+        }
+
     }
 }

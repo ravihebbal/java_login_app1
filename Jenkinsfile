@@ -82,7 +82,20 @@ pipeline{
                     sh "docker image build -t $JOB_NAME:v1.$BUILD_ID ."
                     sh "docker image tag $JOB_NAME:v1.$BUILD_ID ravihebbal/$JOB_NAME:v1.$BUILD_ID"
                     sh "docker image tag $JOB_NAME:v1.$BUILD_ID ravihebbal/$JOB_NAME:latest"
-                    
+                }
+            }
+        }
+
+        stage('push image to docker'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhub')]) {
+                        sh 'docker login -u ravihebbal -p $(dockerhub-pwd)'
+                        sh 'docker image push ravihebbal/$JOB_NAME:v1.$BUILD_ID'
+                        sh 'docker image push ravihebbal/$JOB_NAME:latest'
+                            }
+
+
                 }
             }
         }

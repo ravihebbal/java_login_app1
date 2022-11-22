@@ -35,11 +35,12 @@ pipeline{
         }
 
         stage('eks deployment'){
-            when {  expression { params.action == 'create'}}
+            when {  expression { params.action == 'create'} }
             steps{
 
                 scripts{
                     def apply = false
+
                     try{
                         input message:  'please conform the apply to initita the deployment', ok: 'Ready to apply the config'
                         apply = true

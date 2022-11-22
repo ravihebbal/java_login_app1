@@ -38,7 +38,7 @@ pipeline{
             when {  expression { params.action == 'create'} }
             steps{
 
-                scripts{
+                scrip{
                     def apply = false
 
                     try{

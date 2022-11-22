@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    parametes{
+    parameters{
 
         choice(name: 'action', choices: 'create\ndestroy\ndestroyekscluster', description: 'create/update or destroy eks')
     }

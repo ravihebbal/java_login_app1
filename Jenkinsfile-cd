@@ -6,13 +6,10 @@ pipeline{
         choice(name: 'action', choices: 'create\ndestroy\ndestroyekscluster', description: 'create/update or destroy eks')
 
     }
-
     environment{
         ACCESS_KEY = credentials('aws_access_key_id')
         SECRET_KEY = credentials('aws_secret_access_key')
     }
-
-
 
     stages{
 
@@ -27,12 +24,13 @@ pipeline{
         stage('eks connect'){
 
             steps{
+                sh """
                 
-                sh 'aws configure set aws_access_key_id "$ACCESS_KEY"'
-                sh 'aws configure set aws_secret_access_key "$SECRET_KEY"'
-                sh 'aws configure set region "us-east-1"'
-                sh 'aws eks update-kubeconfig --name ed-eks-01 --region us-east-1'
-                
+                aws configure set aws_access_key_id "$ACCESS_KEY"
+                aws configure set aws_secret_access_key "$SECRET_KEY"
+                aws configure set region "us-east-1"
+                aws eks update-kubeconfig --name ed-eks-01 --region us-east-1
+                """
             }
         }
 

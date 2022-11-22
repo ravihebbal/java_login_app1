@@ -2,7 +2,7 @@ pipeline{
     agent any
     parametes{
 
-        choice(name: 'action', choices: 'create\destroy\destroyekscluster', description: 'create/update or destroy eks')
+        choice(name: 'action', choices: 'create\ndestroy\ndestroyekscluster', description: 'create/update or destroy eks')
     }
 
     stages{

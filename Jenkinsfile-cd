@@ -34,7 +34,7 @@ pipeline{
             }
         }
 
-      /*  stage('eks deployment'){
+        stage('eks deployment'){
             when {  expression{params.action ==  'create'}}
             steps{
 
@@ -58,6 +58,6 @@ pipeline{
             }
         
 
-        } */
+        }
     }
 }
